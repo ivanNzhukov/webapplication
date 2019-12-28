@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css"/>
+</head>
+<body>
+
+<div class="topnavbar" th:fragment="header(title)" th:align="center">
+    <a class="active" href="@{/}" th:text="#{common.home}"/>  <!--Надо добавить json чтобы обрабатывать, когда страница меняется, чтобы и переход Active тоже проставлялся на активную страницу-->
+    <a th:href="@{/clients}" th:text="#{common.clients}"/>
+    <a th:href="@{/goods}" th:text="#{common.goods}"/>
+    <a th:href="@{/menus}" th:text="#{common.menu}"/>
+    <a th:href="@{/recipe}" th:text="#{common.recipe}"/>
+    <a th:href="@{/messages}" th:text="#{common.messages}"/>
+    <a th:href="@{/suppliers}" th:text="#{common.suppliers}"/>
+    <a th:href="@{/bills}" th:text="#{common.bills}"/>
+</div>
+</body>
+</html>

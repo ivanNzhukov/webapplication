@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/fa.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/table.css"/>
+</head>
+<div th:insert="fragments/header (title=#{msg.menu})"/>
+
+<body>
+<h1 th:text="#{menu.list}"/>
+<table>
+    <thead>
+    <tr>
+        <th th:text="#{common.id}"/>
+        <th th:text="#{common.name}"/>
+        <th th:text="#{menu.created}"/>
+        <th th:text="#{menu.start}"/>
+        <th th:text="#{menu.end}"/>
+        <th th:text="#{common.open}"/>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="menu, itemStat : ${menus}">
+        <td><span th:text="${itemStat.index+1}"></span></td>
+        <td><span th:field="*{menu.name}"/></td>
+        <td><span th:field="*{menu.date}"/></td>
+        <td><span th:field="*{menu.dateSince}"/></td>
+        <td><span th:field="*{menu.dateUntil}"/></td>
+        <td><button type="submit"><a class="fa fa-search" href="/" th:text="#{common.open}" th:action="@{/menus/{${itemStat.index+1}}}"method="get"/></button></td>
+
+    </tr>
+    </tbody>
+</table>
+
+
+<div>
+    <form action="#" th:action="@{/menus}" th:object="${form}" method="post">
+        <fieldset>
+            <input type="submit" id="submitButton" th:value="Save">
+            <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
+            <table>
+                <thead>
+                <tr>
+                    <th th:text="#{common.name}"/>
+                    <th th:text="#{menu.start}"/>
+                    <th th:text="#{menu.end}"/>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input th:field="*{name}"/></td>
+                    <td><input type="date" name="calendar" value="19.12.2019" min="19.12.2019" max="31.12.2999" th:field="*{dateSince}"/></td>
+                    <td><input type="date" name="calendar" value="19.12.2019" min="19.12.2019" max="31.12.2999" th:field="*{dateUntil}"/></td>
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+</div>
+
+</body>
+<div th:insert="fragments/footer"/>
+</html>
+

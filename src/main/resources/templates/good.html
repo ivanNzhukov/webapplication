@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/table.css"/>
+</head>
+
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{common.select}"/>
+            <th>#</th>
+            <th th:text="#{common.id}"/>
+            <th th:text="#{common.name}"/>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="good, itemStat : ${goods}" th:unless="${#lists.isEmpty(goods)}">
+            <input type="checkbox" th:field="*{name}" th:value="${good.id}">
+            <td th:text="${itemStat.index+1}"/>
+            <td th:text="${good.name}"/>
+            <td><span th:text="${good.weight}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

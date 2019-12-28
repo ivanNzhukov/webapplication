@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/table.css"/>
+</head>
+<div th:insert="fragments/header (title=#{msg.goods})"/>
+<body>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th th:text="#{common.name}"/>
+            <th th:text="#{goods.weight}"/>
+            <th th:text="#{goods.calories}"/>
+            <th th:text="#{goods.productType}"/>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${goods.empty}">
+            <td colspan="2"> No goods Available</td>
+        </tr>
+        <tr th:each="good, itemStat : ${goods}" th:unless="${#lists.isEmpty(goods)}">
+            <td><span th:text="${itemStat.index+1}"></span></td>
+            <td><span th:text="${good.name}"></span></td>
+            <td><span th:text="${good.weight}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <form action="#" th:action="@{/goods/add}" th:object="${form}" method="post">
+        <fieldset>
+            <input type="submit" id="submitButton" th:value="Save">
+            <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
+            <table>
+                <thead>
+                <tr>
+                    <th th:text="#{common.name}"/>
+                    <th th:text="#{goods.weight}"/>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input th:field="*{name}"/></td>
+                    <td><input th:field="*{weight}"/></td>
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+</div>
+</body>
+<div th:insert="fragments/footer"/>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head></head>
+
+<body>
+<h1 th:text="#{menu.list}"/>
+<table border="1">
+    <thead>
+    <tr>
+        <th th:text="#{common.id}"/>
+        <th th:text="#{common.name}"/>
+        <th th:text="#{menu.created}"/>
+        <th th:text="#{menu.start}"/>
+        <th th:text="#{menu.end}"/>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="menu:${menus}" th:if="${menus.size > 0}">
+    <tr th:each="recipe:${menu.recipes}" th:if="${recipe.size > 0}">
+        <td th:text="${recipe.name}"></td>
+    <tr th:if="${goods.empty}">
+        <td colspan="2"> No goods Available</td>
+    </tr>
+    <tr th:each="good, itemStat : ${goods}" th:unless="${#lists.isEmpty(goods)}">
+        <td><span th:text="${itemStat.index+1}"></span></td>
+        <td><span th:text="${good.name}"></span></td>
+        <td><span th:text="${good.weight}"></span></td>
+    </tr>
+    </tr>
+    </tr>
+    </tbody>
+</table>
+
+
+<!--<div>
+    <tr th:each="message : ${messages}">
+        <td th:text="${message.id}">1</td>
+        <td><a href="#" th:text="${message.title}">Title ...</a></td>
+        <td th:text="${message.text}">Text ...</td>
+    </tr>
+</div>
+<div th:if="${bookPage.totalPages > 0}" class="pagination"
+     th:each="pageNumber : ${pageNumbers}">
+    <a th:href="@{/listBooks(size=${bookPage.size}, page=${pageNumber})}"
+       th:text=${pageNumber}
+       th:class="${pageNumber==bookPage.number + 1} ? active"></a>
+</div>-->
+
+
+</body>
+<div th:insert="fragments/footer"/>
+</html>
+
