@@ -26,3 +26,5 @@ hs_err_pid*
 .idea/compiler.xml
 .idea/encodings.xml
 /target/*
+.idea/uiDesigner.xml
+.idea/workspace.xml
