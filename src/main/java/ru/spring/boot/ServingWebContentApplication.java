@@ -13,7 +13,8 @@ public class ServingWebContentApplication {
 
     //https://o7planning.org/ru/11661/spring-boot-jpa-and-spring-transaction-tutorial  В самом низу там Thymeleaf применры
     //https://stackoverflow.com/questions/30870146/transactional-annotation-not-working-in-spring-boot
-
+    //https://www.youtube.com/watch?v=nyFLX3q3poY
+    
     //http://localhost:8080/foos/abc PathVariable
     //http://localhost:8080/foos?id=abc @RequestParam
 
